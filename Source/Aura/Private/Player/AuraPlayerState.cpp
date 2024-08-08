@@ -17,7 +17,6 @@ AAuraPlayerState::AAuraPlayerState()
 	
 	// 서버가 클라이언트를 얼마나 자주 업데이트 하는지
 	NetUpdateFrequency = 100.f;
-
 }
 
 UAbilitySystemComponent* AAuraPlayerState::GetAbilitySystemComponent() const
