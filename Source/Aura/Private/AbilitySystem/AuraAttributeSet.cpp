@@ -42,7 +42,7 @@ void UAuraAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, 
 		NewValue = FMath::Clamp(NewValue, 0.f, GetMaxMana());
 	}
 }
-
+// GameplayEffect가 속성에 영향을 미칠 때 Unreal Engine의 게임플레이 능력 시스템에 의해 자동으로 호출됨.
 void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
 	Super::PostGameplayEffectExecute(Data);
@@ -50,7 +50,14 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 	FEffectProperties Props;
 	SetEffectProperties(Data, Props);
 
-	
+	if(Data.EvaluatedData.Attribute == GetHealthAttribute())
+	{
+		SetHealth(FMath::Clamp(GetHealth(), 0.f, GetMaxHealth()));
+	}
+	if(Data.EvaluatedData.Attribute == GetManaAttribute())
+	{
+		SetHealth(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
+	}
 }
 
 /* Health */
