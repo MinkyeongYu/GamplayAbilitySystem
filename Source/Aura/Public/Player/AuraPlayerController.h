@@ -5,10 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "AuraPlayerController.generated.h"
+// forward declare (전방 선언) : 컴파일 시간 줄임
 class UInputMappingContext;
 class UInputAction;
 class IEnemyInterface;
-// forward declare (전방 선언) : 컴파일 시간 줄임
 struct FInputActionValue;
 
 /**
