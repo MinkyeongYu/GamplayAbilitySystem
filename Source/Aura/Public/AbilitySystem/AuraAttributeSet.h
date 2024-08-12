@@ -43,6 +43,11 @@ struct FEffectProperties
 	ACharacter* TargetCharacter = nullptr;
 	
 };
+// typedef is specific to the FGameplayAttribute() signature, but TStaticFuncPtr is generic to any signature chosen
+// typedef TBaseStaticDelegateInstance<FGameplayAttribute(), FDefaultDelegateUserPolicy>::FFuncPtr FAttributeFuncPtr;
+// typename은 컴파일러가 FFuncPtr을 타입으로 올바르게 해석하도록 보장합니다.
+template<class T>
+using TStaticFuncPtr = typename TBaseStaticDelegateInstance<T, FDefaultDelegateUserPolicy>::FFuncPtr;
 
 /**
  * 
@@ -108,6 +113,19 @@ private:
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props);
 
 public:
+	/*
+	* TagsToAttributes는 FGameplayTag와 해당 태그에 연관된 정적 함수 포인터(FGameplayAttribute를 반환하는 함수)를 매핑한 TMap
+	* FFuncPtr : 이 시그니처에 해당하는 정적 함수 포인터를 나타내는 타입
+	* 즉, 이 FFuncPtr을 통해 static함수를 호출할 수 있습니다.
+	* TagsToAttributes는 주로 특정 FGameplayTag에 대해 관련된 속성(FGameplayAttribute)을 반환하는 정적 함수 포인터를 저장하는 데 사용됨
+	* 이를 통해 태그를 사용해 특정 속성에 접근하거나 관련 작업을 수행할 수 있습니다.
+	* 예를 들어, 게임에서 Strength라는 태그에 대해 해당하는 FGameplayAttribute를 반환하는 함수를 이 맵에 추가할 수 있습니다.
+	* 이후 이 맵을 사용해 태그를 기반으로 적절한 속성 값을 빠르게 조회하거나 처리할 수 있습니다.
+	 */
+	TMap<FGameplayTag, TStaticFuncPtr<FGameplayAttribute()>> TagsToAttributes;
+	// 반환타입 : float, 매개변수 : int32, float, int32
+	// TStaticFuncPtr<float(int32, float, int32)> RandomFunctionPointer;
+	
 	/*
 	 * Primary Attributes
 	 */
