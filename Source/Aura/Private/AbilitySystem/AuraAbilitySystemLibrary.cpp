@@ -1,18 +1,17 @@
-// Copyright Stella Yu
+// Copyright Druid Mechanics
 
 
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
-#include "UI/HUD/AuraHUD.h"
 #include "Kismet/GameplayStatics.h"
-#include "Player/AuraPlayerState.h"
 #include "UI/WidgetController/AuraWidgetController.h"
-
+#include "Player/AuraPlayerState.h"
+#include "UI/HUD/AuraHUD.h"
 
 UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(const UObject* WorldContextObject)
 {
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
+	if (APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
 	{
-		if(AAuraHUD* AuraHUD = Cast<AAuraHUD>(PC->GetHUD()))
+		if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(PC->GetHUD()))
 		{
 			AAuraPlayerState* PS = PC->GetPlayerState<AAuraPlayerState>();
 			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();
@@ -27,9 +26,9 @@ UOverlayWidgetController* UAuraAbilitySystemLibrary::GetOverlayWidgetController(
 UAttributeMenuWidgetController* UAuraAbilitySystemLibrary::GetAttributeMenuWidgetController(
 	const UObject* WorldContextObject)
 {
-	if(APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
+	if (APlayerController* PC = UGameplayStatics::GetPlayerController(WorldContextObject, 0))
 	{
-		if(AAuraHUD* AuraHUD = Cast<AAuraHUD>(PC->GetHUD()))
+		if (AAuraHUD* AuraHUD = Cast<AAuraHUD>(PC->GetHUD()))
 		{
 			AAuraPlayerState* PS = PC->GetPlayerState<AAuraPlayerState>();
 			UAbilitySystemComponent* ASC = PS->GetAbilitySystemComponent();

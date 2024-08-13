@@ -1,4 +1,4 @@
-// Copyright Stella Yu
+// Copyright Druid Mechanics
 
 
 #include "UI/WidgetController/AuraWidgetController.h"
@@ -11,12 +11,12 @@ void UAuraWidgetController::SetWidgetControllerParams(const FWidgetControllerPar
 	AttributeSet = WCParams.AttributeSet;
 }
 
-void UAuraWidgetController::BroadCastInitialValues()
+void UAuraWidgetController::BroadcastInitialValues()
 {
-	// OverlayWidgetController에서 override할것
+	
 }
 
 void UAuraWidgetController::BindCallbacksToDependencies()
 {
-	// OverlayWidgetController에서 override할것
+	
 }

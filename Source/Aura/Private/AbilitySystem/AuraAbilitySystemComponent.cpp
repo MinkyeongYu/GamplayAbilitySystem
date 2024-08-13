@@ -1,4 +1,4 @@
-// Copyright Stella Yu
+// Copyright Druid Mechanics
 
 
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
@@ -7,18 +7,15 @@
 
 void UAuraAbilitySystemComponent::AbilityActorInfoSet()
 {
-	// FGameplayEffect가 적용된 오브젝트를 가져오는 델리게이트
 	OnGameplayEffectAppliedDelegateToSelf.AddUObject(this, &UAuraAbilitySystemComponent::EffectApplied);
-
+	
 }
 
 void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* AbilitySystemComponent,
-	const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
+												const FGameplayEffectSpec& EffectSpec, FActiveGameplayEffectHandle ActiveEffectHandle)
 {
-	FGameplayTagContainer Tagcontainer;
-	EffectSpec.GetAllAssetTags(Tagcontainer);
+	FGameplayTagContainer TagContainer;
+	EffectSpec.GetAllAssetTags(TagContainer);
 
-	// Broadcast Tags to Widget Controller(script that calls EffectAssetTags Delegate)
-	EffectAssetTags.Broadcast(Tagcontainer);
-	
+	EffectAssetTags.Broadcast(TagContainer);
 }
