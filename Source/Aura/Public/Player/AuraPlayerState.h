@@ -12,7 +12,7 @@ class UAbilitySystemComponent;
 class UAttributeSet;
 
 /**
- * 
+ * Aura Player State - Include ASC, AttributeSet
  */
 UCLASS()
 class AURA_API AAuraPlayerState : public APlayerState, public IAbilitySystemInterface
@@ -35,7 +35,7 @@ protected:
 
 private:
 
-	UPROPERTY(VisibleAnywhere, ReplicatedUsing=OnRep_Level)
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing = OnRep_Level)
 	int32 Level = 1;
 	
 	UFUNCTION()

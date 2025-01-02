@@ -22,6 +22,7 @@ AAuraEnemy::AAuraEnemy()
 
 void AAuraEnemy::HighlightActor()
 {
+	/* 강조 효과를 위해 아웃라인 추가 */
 	GetMesh()->SetRenderCustomDepth(true);
 	GetMesh()->SetCustomDepthStencilValue(CUSTOM_DEPTH_RED);
 	Weapon->SetRenderCustomDepth(true);

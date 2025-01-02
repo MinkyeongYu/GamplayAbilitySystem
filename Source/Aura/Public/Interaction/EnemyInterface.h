@@ -14,13 +14,12 @@ class UEnemyInterface : public UInterface
 };
 
 /**
- * 
+ * 실제 인터페이스를 정의하는 클래스. 순수 가상 함수를 선언하여 해당 인터페이스를 구현하는 클래스가 이 함수를 반드시 정의하도록 강제
  */
 class AURA_API IEnemyInterface
 {
 	GENERATED_BODY()
 
-	// 실제 인터페이스를 정의하는 클래스. 순수 가상 함수를 선언하여 해당 인터페이스를 구현하는 클래스가 이 함수를 반드시 정의하도록 강제
 public:
 	virtual void HighlightActor() = 0;
 	virtual void UnHighlightActor() = 0;

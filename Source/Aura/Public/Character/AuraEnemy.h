@@ -8,7 +8,7 @@
 #include "AuraEnemy.generated.h"
 
 /**
- * 
+ * Aura Enemy
  */
 UCLASS()
 class AURA_API AAuraEnemy : public AAuraCharacterBase, public IEnemyInterface
